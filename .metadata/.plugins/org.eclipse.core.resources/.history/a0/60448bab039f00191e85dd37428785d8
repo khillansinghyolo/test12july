@@ -1,0 +1,47 @@
+package gcube.com;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeDriverService;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class HondaStaging {
+
+	public static void main(String []arg) throws Exception 
+	{
+	System.setProperty("webdriver.chrome.driver", "D:\\SELENIUM\\Browser Drivers\\ChromeDriver\\74 version\\chromedriver.exe");
+	System.setProperty(ChromeDriverService.CHROME_DRIVER_LOG_PROPERTY, "D://SELENIUM//chrome.log");
+	System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true");
+	WebDriver driver = new ChromeDriver();
+	driver.manage().window().maximize();
+	driver.manage().deleteAllCookies();
+	driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
+	driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+	driver.get("http://50.16.49.139:81/Default.aspx");
+	
+	WebElement element=driver.findElement(By.xpath("//select[@id='Client']"));
+	Select dropdown=new Select(element);
+	dropdown.selectByIndex(2);
+	System.out.println("successfully select dropdown");
+	
+	driver.findElement(By.xpath("//input[@id='UserName']")).sendKeys("00100");
+	driver.findElement(By.xpath("//input[@id='Password']")).sendKeys("password");
+	driver.findElement(By.xpath("//input[@id='Password']/following::div[4]/child::a[1]")).click();
+    
+	WebDriverWait wait = new WebDriverWait(driver, 30);
+    wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id = 'btnSessionExpiredCancelled']")));
+	//Thread.sleep(5000);
+	//Alert alert=driver.switchTo().alert();
+	//alert.accept();
+	System.out.println("Home Page successfully Open");
+	
+	driver.close();
+	
+    }
+}

@@ -1,0 +1,11 @@
+package gcube.qc.pages;
+
+import gcube.gc.base.Base;
+
+public class HomePage extends Base
+{
+	HomePage(){}
+	
+	
+
+}

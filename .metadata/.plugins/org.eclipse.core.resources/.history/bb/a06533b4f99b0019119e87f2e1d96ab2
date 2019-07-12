@@ -1,0 +1,9 @@
+package gcube.qc.pages;
+
+import gcube.gc.base.Base;
+
+public class LoginPage extends Base {
+	
+	//page factory
+	
+}

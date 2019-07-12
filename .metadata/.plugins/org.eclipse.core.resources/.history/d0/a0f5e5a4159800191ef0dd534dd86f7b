@@ -1,0 +1,5 @@
+package gcube.gc.base;
+
+public class BasePage {
+
+}

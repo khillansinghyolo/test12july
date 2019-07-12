@@ -1,0 +1,31 @@
+package gcube.com;
+
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeDriverService;
+
+public class Popup {
+		public static void main(String[] args) throws InterruptedException {
+			System.setProperty("webdriver.chrome.driver", "D:\\SELENIUM\\Browser Drivers\\ChromeDriver\\74 version\\chromedriver.exe");
+			System.setProperty(ChromeDriverService.CHROME_DRIVER_LOG_PROPERTY, "D://SELENIUM//chrome.log");
+			System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true");
+			WebDriver driver = new ChromeDriver();
+			driver.manage().window().maximize();
+			driver.manage().deleteAllCookies();
+			driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			driver.get("http://demo.guru99.com/popup.php");
+			System.out.println(driver.getTitle());
+			driver.findElement(By.xpath("//div[@class='row']/following::a[1]")).click();
+			System.out.println("successfully open");
+			//String window=driver.getWindowHandle();
+			//Set<String> s1=driver.getWindowHandles();
+			
+			
+	}
+
+}
